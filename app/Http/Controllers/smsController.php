@@ -11,10 +11,10 @@ class smsController extends Controller
     public function store(Request $request, $id)
     {
         $transaksi = Transaction::findOrFail($id);
-
+        
         Nexmo::message()->send([
             'to' =>   $transaksi->phone,
-            'from' => 'Rental Sepeda',
+            'from' => 'Rental Sepeda (ARM)',
             'text'  => 'Halo kami dari Rental-Sepeda ingin memberikan kode'.$transaksi->item->kode_barang
             
            . 'Nama Peminjam:'.$transaksi->nama_peminjam

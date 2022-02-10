@@ -47,7 +47,7 @@
                                 @empty 
                                 <tr>
                                     <td >
-                                    <td colspan="8" class="text-center text-danger">Maaf data pengembalian tidak tersedia</td></td>
+                                    <td colspan="8  " class="text-center text-danger">Maaf data pengembalian tidak tersedia</td></td>
                                 </tr>
                                 @endforelse
                             </tbody>

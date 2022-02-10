@@ -25,6 +25,7 @@ class CreateTransactionsTable extends Migration
             $table->string('idr');
             $table->string('email')->unique();
             $table->string('phone');
+            $table->string('durasi')->nullable();
             $table->timestamps();
         });
     }

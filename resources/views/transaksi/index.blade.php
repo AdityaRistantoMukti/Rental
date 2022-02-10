@@ -50,6 +50,7 @@
                                             <input type="hidden" name="phone" class="form-control" value="{{$tr->phone}}">
                                             <button type="submit" class="btn btn-outline-primary btn-sm mb-2" style="width: 130px; height:25px">Kirim notifikasi</button>
                                         </form>
+
                                         <form action="{{route('pengembalian.store', $tr->id)}}" method="post">
                                             @csrf
                                             <input type="hidden" name="kodebarang_id" class="form-control" value="{{$tr->item->id}}">

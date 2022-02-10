@@ -36,6 +36,7 @@ class TransaksiController extends Controller
             'tanggal_kembali' => $request->tanggal_kembali,
             'email' => $request->email,
             'phone' => $request->phone,
+            'durasi' => $request->durasi
         ]);
 
          if ($transaction->save()) {
@@ -56,6 +57,24 @@ class TransaksiController extends Controller
              $get->update([
                 'jumlah_barang' => $hitung
              ]);
+        }
+
+        if ($transaction->save()) {
+            $datetime2 = strtotime($transaction->tanggal_kembali) ;
+            $datenow = strtotime($transaction->tanggal_pinjam);
+            $durasi = ($datenow - $datetime2) / 86400 ;
+            $durasi2 = ($durasi).'Hari';
+           
+            if ($datenow > $datetime2) {
+                'Terlambat';
+            }
+            else {
+                echo "$durasi Hari";
+            }
+
+            $transaction->update([
+                'durasi' => $durasi2
+            ]);
         }
         return redirect()->back();
     }
