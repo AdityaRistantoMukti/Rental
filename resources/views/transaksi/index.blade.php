@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="">
+    <div class="container">
         <div class="row">
             <div class="col-md-12">
                 <div class="card">
@@ -12,9 +12,9 @@
                                     <th>No.Faktur</th>
                                     <th>Kode Barang</th>
                                     <th>Nama Barang</th>
-                                    <th>Nama Penyewa</th>
-                                    <th>Tanggal Pinjam</th>
-                                    <th>Tanggal Kembali</th>
+                                    <th>Penyewa</th>
+                                    <th>Tgl Pinjam</th>
+                                    <th>Tgl Kembali</th>
                                     <th>Lama Penyewaan</th>
                                     <th>Options</th>
                                 </tr>
@@ -45,9 +45,10 @@
                                     @endif
                                     </td>
                                     <td>
-                                        <form action="" method="post">
+                                        <form action="{{route('sms', $tr->id)}}" method="post">
                                             @csrf
-                                            <button type="submit" class="btn btn-outline-primary btn-sm mb-2" style="width: 127px; height:25px">Kirim notifikasi</button>
+                                            <input type="hidden" name="phone" class="form-control" value="{{$tr->phone}}">
+                                            <button type="submit" class="btn btn-outline-primary btn-sm mb-2" style="width: 130px; height:25px">Kirim notifikasi</button>
                                         </form>
                                         <form action="{{route('pengembalian.store', $tr->id)}}" method="post">
                                             @csrf
@@ -57,7 +58,7 @@
                                             <input type="hidden" name="tglpinjam_id" id="" class="form-control" value="{{$tr->id}}">
                                             <input type="hidden" name="tglkembali_id" id="" class="form-control" value="{{$tr->id}}">
 
-                                            <button type="submit" class="btn btn-outline-primary btn-sm">Buat pengembalian</button>
+                                            <button type="submit" class="btn btn-outline-primary btn-sm" style="width: 130px; height:25px;">Buat pengembalian</button>
                                         </form>
                                     </td>
                                     
@@ -65,7 +66,7 @@
                                 @empty
                                 <tr>
                                     <td>
-                                        <td colspan="8" class="text-center">Maaf data peminjaman belum tersedia</td>
+                                        <td colspan="8" class="text-center text-danger">Maaf data peminjaman belum tersedia</td>
                                     </td>
                                 </tr>
                                 @endforelse

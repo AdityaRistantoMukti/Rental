@@ -24,7 +24,7 @@ class CreateTransactionsTable extends Migration
             $table->string('tanggal_kembali');
             $table->string('idr');
             $table->string('email')->unique();
-            $table->string('phone')->unique();
+            $table->string('phone');
             $table->timestamps();
         });
     }

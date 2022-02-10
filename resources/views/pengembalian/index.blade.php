@@ -20,7 +20,7 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($returns as $rt)
+                                @forelse ($returns as $rt)
                                 <tr>
                                     <td>{{$rt->no_pengembalian}}</td>
                                     <td>{{$rt->transaksi->no_faktur}}</td>
@@ -44,7 +44,12 @@
                                     @endif
                                     </td>
                                 </tr>
-                                @endforeach
+                                @empty 
+                                <tr>
+                                    <td >
+                                    <td colspan="8" class="text-center text-danger">Maaf data pengembalian tidak tersedia</td></td>
+                                </tr>
+                                @endforelse
                             </tbody>
                         </table>
                     </div>

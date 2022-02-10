@@ -21,7 +21,6 @@ class CreateReturnsTable extends Migration
             $table->unsignedInteger('namapeminjam_id');
             $table->unsignedInteger('tglpinjam_id');
             $table->unsignedInteger('tglkembali_id');
-            $table->string('durasi');
             $table->timestamps();
         });
     }
