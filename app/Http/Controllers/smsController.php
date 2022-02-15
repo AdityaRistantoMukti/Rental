@@ -14,7 +14,7 @@ class smsController extends Controller
         
         Nexmo::message()->send([
             'to' =>   $transaksi->phone,
-            'from' => 'Rental Sepeda (ARM)',
+            'from' => 'ARM',
             'text'  => 'Halo kami dari Rental-Sepeda ingin memberikan kode'.$transaksi->item->kode_barang
             
            . 'Nama Peminjam:'.$transaksi->nama_peminjam

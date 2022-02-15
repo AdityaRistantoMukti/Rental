@@ -33,30 +33,38 @@ class PengembalianController extends Controller
             'tglkembali_id' => $request->tglkembali_id,
             'nofaktur_id' => $request->nofaktur_id,
         ]);
-        
+
         if ($return->save()) {
             $transaksi = Transaction::findOrFail($id);
-
-            Nexmo::message()->send([
-                'to' =>   $transaksi->phone,
-                'from' => 'ARM',
-                'text'  => 'Halo kami dari Rental-Sepeda ingin Memberitahu bahwa anda sudah  Mengembalikan Barang nya'
-
-               . 'Nama Peminjam:'.$transaksi->nama_peminjam
-               . 'Tanggal Pinjam:'. $transaksi->tanggal_pinjam
-               . 'Tanggal Kembali:'.$transaksi->tanggal_kembali
-               . 'Jumlah Barang:'.$transaksi->jumlah
-               . 'Harga:'. $transaksi->idr
-               . 'Terima Kasih'
-                ]);
+        
+            // Nexmo::message()->send([
+            //     'to' =>   $transaksi->phone,
+            //     'from' => 'ARM',
+            //     'text'  => 'Halo kami dari Rental-Sepeda ingin berterima kasih kepada customer
+            //      karena sudah mengembalikan Barang Yg telah dipinjam'
                 
-                $get = Item::findOrFail($return->kodebarang_id);
+            //     . 'Nama Peminjam:'.$transaksi->nama_peminjam
+            //     . 'Tanggal Pinjam:'. $transaksi->tanggal_pinjam
+            //     . 'Tanggal Kembali:'.$transaksi->tanggal_kembali
+            //     . 'Jumlah Barang:'.$transaksi->jumlah
+            //     . 'Harga:'. $transaksi->idr
+            //     . 'Terima Kasih atas tanggung jawab nya'
+            //     . 'Semoga selalu bahagia -arm'
+            //     ]);
+        }
+        if ($return->save()) {
+         $get = Item::findOrFail($return->kodebarang_id);
 
-                $hitung = $get->jumlah_barang + $transaksi->jumlah;
+         $hitung = $get->jumlah_barang + $transaksi->jumlah;
+         $jumlah = $transaksi->jumlah - $transaksi->jumlah;
+             $get->update([
+            'jumlah_barang' =>$hitung
+            ]);
+            $transaksi->update([
+                'jumlah' => $jumlah,
+                'durasi' => NULL
+            ]);
 
-                $get->update([
-                    'jumlah_barang' =>$hitung
-                ]);
         }
         return redirect()->back();
     }

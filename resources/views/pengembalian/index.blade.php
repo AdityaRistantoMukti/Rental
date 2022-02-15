@@ -35,13 +35,7 @@
                                         $durasi = ($datenow - $datetime2) / 86400 ;
                                         $durasi2 = ($durasi);
                                     ?>
-                                    @if ($datenow == $datetime2  ) 
-                                            <span class="text-danger">Waktunya mengembalikan</span> 
-                                        @elseif($datenow > $datetime2)
-                                            Sudah lewat {{$durasi}} Hari
-                                        @else
-                                        <?php $durasi1 = abs($durasi) ?> {{ $durasi1 }} Hari
-                                    @endif
+                                        <?php $durasi1 = abs($durasi) ?> {{ $durasi1 }} Hari   
                                     </td>
                                 </tr>
                                 @empty 
