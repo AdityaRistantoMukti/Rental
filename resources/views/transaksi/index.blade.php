@@ -34,7 +34,7 @@
                                         <?php
                                         date_default_timezone_set("Asia/Jakarta");
                                         $datetime2 = strtotime($tr->tanggal_kembali) ;
-                                        $datenow = strtotime(date('d-m-Y'));
+                                        $datenow = strtotime($tr->tanggal_pinjam);
                                         $durasi = ($datenow - $datetime2) / 86400 ;
                                         $durasi2 = ($durasi);
                                     ?>

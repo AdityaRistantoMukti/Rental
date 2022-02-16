@@ -15,16 +15,16 @@
         <table class="table table-stripped">
             <thead>
                 <tr>
-                    <th>- Jumlah data Barang : {{$items}} Barang</th>
+                    <th>- Jumlah data Barang : {{$items}} Data </th>
                 </tr>
                 <tr>
-                    <th>- Jumlah data Transaksi: {{$transaksi}} Transaksi</th>
+                    <th>- Jumlah data Transaksi: {{$transaksi}} Data </th>
                 </tr>
                 <tr>
                     <th>- Jumlah data Terlambat: {{$late}} Data</th>
                 </tr>
                 <tr>
-                    <th>- Jumlah Penghasilan: IDR  {{number_format($omset)}}</th>
+                    <th>- Jumlah Penghasilan: IDR {{number_format($omset)}}</th>
                 </tr>
             </thead>
         </table>

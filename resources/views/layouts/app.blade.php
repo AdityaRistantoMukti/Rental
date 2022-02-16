@@ -59,8 +59,16 @@
                                     <li class="nav-link mr-5 hover">
                                         <a href="{{route('pengembalian.index')}}" class="nav-link text-white">Pengembalian</a>
                                     </li>
-                                    <li class="nav-link mr-5 hover">
-                                        <a href="{{route('laporan.index')}}" class="nav-link text-white">Laporan</a>
+                                    <li class="nav-link dropdown">
+                                        <a class="nav-link dropdown-toggle text-white" role="button" id="navbarDropdown" data-toggle="dropdown" aria-expanded="false">
+                                            Laporan
+                                        </a>
+                                        <div class="dropdown-menu" aria-labelledby="navbarDropdown"  style="text-transform: none">
+                                            <a href="{{route('laporan.item')}}" class="dropdown-item">Daftar Barang</a>
+                                            <a href="{{route('laporan.transaksi')}}" class="dropdown-item"> Transaksi</a>
+                                            <a href="{{route('laporan.return')}}" class="dropdown-item">Pengembalian</a>
+                                            <a href="{{route('laporan.dashboard')}}" class="dropdown-item">Dashboard</a>
+                                        </div>
                                     </li>
                                 </ul>  
                         </div>
